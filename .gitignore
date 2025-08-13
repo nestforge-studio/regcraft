@@ -1,0 +1,38 @@
+# Node
+node_modules/
+.npmrc
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+/dist/
+/.cache/
+/.parcel-cache/
+
+# Coverage and test artifacts
+/coverage/
+.jest/*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Env/Secrets (none should be committed)
+.env
+.env.*
+
+# Logs
+*.log
+logs/
+
+# Misc
+*.swp
+*.swo

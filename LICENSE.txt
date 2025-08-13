@@ -1,0 +1,20 @@
+Copyright © 2025 Nestforge Studio. All rights reserved.
+
+This software and associated materials are proprietary to Nestforge Studio ("Owner").
+
+You may not, without prior written permission from the Owner:
+- use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of this software,
+- host or make available this software to third parties,
+- create derivative works based on this software,
+- remove or alter any copyright notices.
+
+No license or rights are granted by implication, estoppel, or otherwise.
+
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+OWNER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+For licensing enquiries, contact: legal@nestforge.studio

@@ -1,0 +1,47 @@
+{
+  "name": "regcraft",
+  "version": "0.0.1",
+  "description": "Visual Regex Builder",
+  "private": true,
+  "keywords": [
+    "regex",
+    "builder",
+    "visual"
+  ],
+  "license": "UNLICENSED",
+  "author": "RegCraft",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "start": "webpack serve --open --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "html-webpack-plugin": "^5.6.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4",
+    "webpack-merge": "^5.10.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "extensionsToTreatAsEsm": [".js"],
+    "testMatch": ["**/__tests__/**/*.test.js"],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "js/modules/**/*.js",
+      "!js/main.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  }
+}

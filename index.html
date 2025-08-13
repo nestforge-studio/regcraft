@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RegCraft - Visual Regex Builder</title>
+  <meta name="description" content="Build regular expressions visually with connectable blocks and test matches with color highlighting.">
+  <meta name="keywords" content="regex, regular expressions, regex builder, visual regex, pattern matching, JavaScript regex, Python regex, PCRE, learn regex, regex tool">
+  <meta name="author" content="RegCraft">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="RegCraft - Visual Regex Builder">
+  <meta property="og:description" content="Build regular expressions visually with connectable blocks and test matches with color highlighting.">
+  <meta property="og:image" content="icon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RegCraft - Visual Regex Builder">
+  <meta name="twitter:description" content="Build regular expressions visually with connectable blocks and test matches with color highlighting.">
+  <meta name="twitter:image" content="icon.png">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0ea5e9">
+  <meta name="referrer" content="no-referrer">
+  <!-- Content Security Policy for GitHub Pages via meta tag; uses a static nonce for inline scripts -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com 'nonce-regcraft2025'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script nonce="regcraft2025">
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { brand: {
+      50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e'
+    }}}}};
+  </script>
+  <script type="application/ld+json" nonce="regcraft2025">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "RegCraft",
+    "applicationCategory": "DeveloperApplication",
+    "description": "Build regular expressions visually with connectable blocks and test matches with color highlighting.",
+    "browserRequirements": "Requires JavaScript",
+    "operatingSystem": "Any"
+  }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen dark:bg-slate-900 dark:text-slate-200">
+  <header class="border-b bg-white sticky top-0 z-10 dark:bg-slate-900 dark:border-slate-700">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+      <img src="icon.svg" alt="RegCraft" class="w-7 h-7">
+      <h1 class="text-xl font-semibold">RegCraft</h1>
+      <span class="text-slate-500 dark:text-slate-400">Visual Regex Builder</span>
+      <div class="ml-auto flex items-center gap-2 text-sm">
+        <label class="flex items-center gap-2"><input id="flag-i" type="checkbox" class="accent-sky-600"><span>/i</span></label>
+        <label class="flex items-center gap-2"><input id="flag-m" type="checkbox" class="accent-sky-600"><span>/m</span></label>
+        <label class="flex items-center gap-2"><input id="flag-g" type="checkbox" class="accent-sky-600" checked><span>/g</span></label>
+        <button id="theme-toggle" class="ml-2 text-xs px-2 py-1 border rounded hover:bg-slate-50 dark:hover:bg-slate-800 dark:border-slate-600" aria-label="Toggle dark mode">Toggle theme</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-4 space-y-4">
+    <!-- Instructions -->
+    <section class="md:col-span-3 bg-white border rounded-lg shadow-sm dark:bg-slate-800 dark:border-slate-700">
+      <details class="group">
+        <summary class="cursor-pointer list-none p-3 border-b flex items-center justify-between dark:border-slate-700">
+          <div class="flex items-center gap-2">
+            <span class="font-semibold">Beginner-friendly Instructions</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400">(click to expand)</span>
+          </div>
+          <svg class="w-4 h-4 text-slate-500 dark:text-slate-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+        </summary>
+        <div class="p-4 text-sm leading-6 text-slate-700 dark:text-slate-200 space-y-4">
+          <div>
+            <h3 class="font-semibold text-slate-900 dark:text-white">1) What is RegCraft?</h3>
+            <p>RegCraft lets you build regular expressions using connectable blocks. If two blocks don’t make sense together (e.g., a quantifier without something to quantify), the app prevents it or shows a helpful message.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900 dark:text-white">2) Getting started</h3>
+            <ul class="list-disc ml-5 space-y-1">
+              <li>Drag blocks from the <span class="font-medium">Blocks</span> panel into the <span class="font-medium">Builder</span> area. You can also click a block to add it to the end.</li>
+              <li>Reorder by dragging chips inside the Builder.</li>
+              <li>Remove a block with the × button on the chip.</li>
+              <li>Use <span class="font-mono">^</span> (Start) and <span class="font-mono">$</span> (End) to anchor your pattern, if needed.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900 dark:text-white">3) Entering values</h3>
+            <ul class="list-disc ml-5 space-y-1">
+              <li><span class="font-medium">Literal</span> prompts for text and safely treats it as exact characters.</li>
+              <li><span class="font-medium">Class [..]</span> lets you type a set or range (e.g., <span class="font-mono">abc0-9</span>).</li>
+              <li>Numbered quantifiers prompt for counts like <span class="font-mono">{n}</span> or <span class="font-mono">{m,n}</span>.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900 dark:text-white">4) Quantifiers (repeaters)</h3>
+            <p>Blocks like <span class="font-mono">+</span>, <span class="font-mono">*</span>, <span class="font-mono">?</span>, or <span class="font-mono">{m,n}</span> must be placed after a block to apply to it. Try placing a word block, then a <span class="font-mono">+</span> to mean “one or more word characters”.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900 dark:text-white">5) Groups and alternation</h3>
+            <ul class="list-disc ml-5 space-y-1">
+              <li>Use <span class="font-mono">(</span> and <span class="font-mono">)</span> to group parts of your pattern.</li>
+              <li>Use <span class="font-mono">|</span> for “or”, e.g., <span class="font-mono">(cat|dog)</span>.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900 dark:text-white">6) Test and highlight</h3>
+            <ul class="list-disc ml-5 space-y-1">
+              <li>Type or paste text into <span class="font-medium">Test Input</span>. Matches appear highlighted.</li>
+              <li>Different colored chips correspond to differently colored highlights for easier reading.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900 dark:text-white">7) Flags</h3>
+            <ul class="list-disc ml-5 space-y-1">
+              <li><span class="font-mono">/i</span> – case-insensitive</li>
+              <li><span class="font-mono">/m</span> – multi-line (anchors ^ and $ work per line)</li>
+              <li><span class="font-mono">/g</span> – find all matches (recommended for highlighting)</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900 dark:text-white">8) Quick examples</h3>
+            <ul class="list-disc ml-5 space-y-1">
+              <li><span class="font-medium">Starts with “Hello”:</span> <span class="font-mono">^</span> → Literal “Hello” → <span class="font-mono">$</span></li>
+              <li><span class="font-medium">Word followed by digits:</span> Word <span class="font-mono">\w</span> with <span class="font-mono">+</span> → Digit <span class="font-mono">\d</span> with <span class="font-mono">+</span></li>
+              <li><span class="font-medium">Email-like piece (simplified):</span> Word+ → Literal “@” → Word+ → Literal “.” → Word+</li>
+            </ul>
+          </div>
+          <div class="text-slate-600 dark:text-slate-300">
+            Tip: If something won’t drop into place, it likely isn’t allowed in that position. Try grouping or reordering.
+          </div>
+        </div>
+      </details>
+    </section>
+    <!-- Middle split: Left tabs + Right Builder -->
+    <div class="grid lg:grid-cols-2 gap-4">
+      <!-- Left: Tabbed panel -->
+      <section class="bg-white border rounded-lg shadow-sm dark:bg-slate-800 dark:border-slate-700">
+        <div class="p-3 border-b dark:border-slate-700">
+          <div class="flex items-center gap-2 text-sm" role="tablist" aria-label="Left panel view">
+            <button class="tab-btn px-2 py-1 border rounded font-medium" data-view="blocks" role="tab" aria-selected="true">Blocks</button>
+            <button class="tab-btn px-2 py-1 border rounded" data-view="recipes" role="tab" aria-selected="false">Recipes</button>
+            <button class="tab-btn px-2 py-1 border rounded" data-view="freetext" role="tab" aria-selected="false">Free Text</button>
+          </div>
+        </div>
+        <!-- Blocks panel -->
+        <section id="palette-section" class="">
+          <div class="p-3 border-b flex items-center justify-between dark:border-slate-700">
+            <h2 class="font-semibold">Blocks</h2>
+            <button id="clear-seq" class="text-sm text-sky-700 hover:underline">Clear</button>
+          </div>
+          <div class="p-3 grid grid-cols-2 sm:grid-cols-3 gap-2" id="palette">
+            <!-- Blocks populated by JS -->
+          </div>
+        </section>
+        <!-- Recipes panel -->
+        <section id="recipes-section" class="hidden">
+          <div class="p-3 h-full max-h-[420px] overflow-auto" id="recipes-panel">
+            <div class="grid grid-cols-1 gap-2" id="recipes-list">
+              <!-- Recipe buttons populated by JS -->
+            </div>
+          </div>
+        </section>
+        <!-- Free Text panel -->
+        <section id="freetext-section" class="hidden">
+          <div class="p-3 space-y-2">
+            <label for="freetext-input" class="text-sm text-slate-600 dark:text-slate-300">Enter your own regex (without surrounding /slashes/):</label>
+            <textarea id="freetext-input" class="w-full h-32 border rounded p-2 font-mono dark:bg-slate-900 dark:text-slate-200 dark:border-slate-600" placeholder="e.g., ^Hello\s+\w+$"></textarea>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Flags are controlled by the switches in the header.</p>
+          </div>
+        </section>
+      </section>
+
+      <!-- Right: Builder Canvas -->
+    <section class="bg-white border rounded-lg shadow-sm flex flex-col dark:bg-slate-800 dark:border-slate-700">
+      <div class="p-3 border-b flex items-center justify-between dark:border-slate-700">
+        <h2 class="font-semibold">Builder</h2>
+        <div class="text-sm text-slate-500 dark:text-slate-400">Drag blocks here and arrange order</div>
+      </div>
+      <div id="canvas" class="p-3 min-h-[120px] flex flex-wrap gap-2 items-start" aria-label="Regex builder canvas" role="list">
+        <!-- Chips -->
+      </div>
+      <div class="px-3 pb-3 text-sm text-slate-600 space-y-2 dark:text-slate-300">
+        <div>Regex: <code id="regex-output" class="text-sky-700 dark:text-sky-400"></code></div>
+        <div class="flex flex-wrap items-center gap-2">
+          <label class="text-sm text-slate-600 dark:text-slate-300" for="lang-select">Language:</label>
+          <select id="lang-select" class="text-sm border rounded px-2 py-1 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-600">
+            <option value="js">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="php">PHP</option>
+            <option value="java">Java</option>
+            <option value="csharp">C#</option>
+          </select>
+          <button id="copy-snippet" class="text-sm text-sky-700 hover:underline">Copy snippet</button>
+          <button id="copy-regex" class="text-sm text-sky-700 hover:underline">Copy regex only</button>
+        </div>
+        <pre class="bg-slate-50 dark:bg-slate-900 dark:text-slate-200 border dark:border-slate-700 rounded p-2 overflow-auto text-xs"><code id="lang-snippet"></code></pre>
+        <div id="validation-msg" class="text-red-600" role="alert" aria-live="polite"></div>
+      </div>
+    </section>
+    </div>
+
+    <!-- Tester -->
+    <section class="md:col-span-3 bg-white border rounded-lg shadow-sm dark:bg-slate-800 dark:border-slate-700">
+      <div class="p-3 border-b dark:border-slate-700"><h2 class="font-semibold">Test Input</h2></div>
+      <div class="p-3 grid md:grid-cols-2 gap-4">
+        <textarea id="test-input" class="w-full h-40 border rounded p-2 font-mono dark:bg-slate-900 dark:text-slate-200 dark:border-slate-600" placeholder="Type or paste text to test against your regex..."></textarea>
+        <div class="border rounded p-2 bg-slate-50 dark:bg-slate-900 dark:text-slate-200 dark:border-slate-700 overflow-auto">
+          <div class="text-sm text-slate-500 dark:text-slate-400 mb-2">Highlighted Matches</div>
+          <div id="highlight-output" class="font-mono whitespace-pre-wrap"></div>
+          <div class="text-sm text-slate-500 dark:text-slate-400 mt-4 mb-2">In text (highlighted)</div>
+          <div id="inline-output" class="font-mono whitespace-pre-wrap"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-6xl mx-auto p-4 text-center text-xs text-slate-500 dark:text-slate-400">
+    Made with ❤️ for builders. © 2025 Nestforge Studio. All rights reserved.
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
