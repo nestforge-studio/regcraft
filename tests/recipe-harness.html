@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RegCraft Recipe Test Harness</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <main class="max-w-4xl mx-auto p-4 space-y-4">
+    <h1 class="text-xl font-semibold">RegCraft Recipe Test Harness</h1>
+    <p class="text-sm text-slate-600">Open this page in a browser and click "Run Tests". Results will appear below. This does not require Node/npm.</p>
+
+    <div class="flex gap-2">
+      <button id="run-tests" class="px-3 py-1 border rounded bg-white hover:bg-slate-50">Run Tests</button>
+      <button id="clear" class="px-3 py-1 border rounded bg-white hover:bg-slate-50">Clear Results</button>
+    </div>
+
+    <div id="results" class="space-y-2"></div>
+
+    <!-- Minimal DOM that builder/highlight expect -->
+    <div class="hidden">
+      <input id="flag-i" type="checkbox" />
+      <input id="flag-m" type="checkbox" />
+      <input id="flag-g" type="checkbox" checked />
+      <div id="palette"></div>
+      <div id="canvas"></div>
+      <code id="regex-output"></code>
+      <div id="validation-msg"></div>
+      <textarea id="test-input"></textarea>
+      <select id="lang-select"></select>
+      <code id="lang-snippet"></code>
+      <div id="highlight-output"></div>
+      <div id="inline-output"></div>
+      <button id="clear-seq"></button>
+      <select id="preset-select"></select>
+    </div>
+  </main>
+
+  <script type="module" src="./recipe-harness.js"></script>
+</body>
+</html>
