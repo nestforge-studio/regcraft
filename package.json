@@ -28,7 +28,6 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "extensionsToTreatAsEsm": [".js"],
     "testMatch": ["**/__tests__/**/*.test.js"],
     "collectCoverage": true,
     "collectCoverageFrom": [
