@@ -13,8 +13,8 @@
   "scripts": {
     "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js",
     "test:watch": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --watchAll",
-    "start": "webpack serve --open --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.prod.js"
+    "start": "webpack serve --open --config webpack.config.dev.cjs",
+    "build": "webpack --config webpack.config.prod.cjs"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
@@ -34,7 +34,6 @@
       "js/modules/**/*.js",
       "!js/main.js"
     ],
-    "extensionsToTreatAsEsm": [".js"],
     "coverageThreshold": {
       "global": {
         "branches": 80,
