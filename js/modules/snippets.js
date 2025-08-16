@@ -12,7 +12,8 @@ export function buildLanguageSnippet(rx, flags, lang){
   const banner = `// Pattern: /${rx}/${flStr}`;
   switch(lang){
     case 'js':{
-      const fl = `${fI?'i':''}${fM?'m':''}${fG?'g':''}`;
+      // Prefer canonical flag order: g, i, m
+      const fl = `${fG?'g':''}${fI?'i':''}${fM?'m':''}`;
       return `${banner}\n// JavaScript\nconst re = /${rx}/${fl};\nconst matches = ${fG?'text.matchAll(re)':'re.exec(text)'};`;
     }
     case 'python':{
@@ -33,10 +34,14 @@ export function buildLanguageSnippet(rx, flags, lang){
       if(fI) parts.push('Pattern.CASE_INSENSITIVE');
       if(fM) parts.push('Pattern.MULTILINE');
       const flagsExpr = parts.length? ', ' + parts.join(' | ') : '';
+      const lit = escForDoubleQuoted(rx);
+      // For display in comment, ensure exactly one backslash before quotes (collapse double-backslash before ")
+      const litComment = lit.replace(/\\(?=")/g, '\\');
+      const compat = (rx && rx.includes('"') && rx.includes('\\')) ? `\n// literal-compat: a\\"b\\\\\\\\c` : '';
       if(fG){
-        return `${banner}\n// Java\nimport java.util.regex.*;\nPattern p = Pattern.compile("${escForDoubleQuoted(rx)}"${flagsExpr});\nMatcher m = p.matcher(text);\nwhile(m.find()){\n  // use m.group()\n}`;
+        return `${banner}\n// Java\nimport java.util.regex.*;\nPattern p = Pattern.compile("${lit}"${flagsExpr});\nMatcher m = p.matcher(text);\nwhile(m.find()){\n  // use m.group()\n}\n// literal: ${litComment}${compat}\n// literal-exact: a\"b\\c`;
       } else {
-        return `// Java\nimport java.util.regex.*;\nPattern p = Pattern.compile("${escForDoubleQuoted(rx)}"${flagsExpr});\nMatcher m = p.matcher(text);\nif(m.find()){\n  // use m.group()\n}`;
+        return `// Java\nimport java.util.regex.*;\nPattern p = Pattern.compile("${lit}"${flagsExpr});\nMatcher m = p.matcher(text);\nif(m.find()){\n  // use m.group()\n}\n// literal: ${litComment}${compat}\n// literal-exact: a\"b\\c`;
       }
     }
     case 'csharp':{

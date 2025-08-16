@@ -15,7 +15,7 @@ describe('snippets: remaining languages and defaults', () => {
     const code = buildLanguageSnippet('a"b\\c', { i:true, m:false, g:false }, 'java');
     expect(code).toContain('Pattern.compile');
     expect(code).toContain('Matcher m = p.matcher(text)');
-    expect(code).toContain('a\"b\\\\c');
+    expect(code).toContain('a\\\"b\\\\c');
   });
 
   test('C# snippet with options and non-global', async () => {
