@@ -3,3 +3,6 @@
 # Allow crawling of all content
 User-agent: *
 Disallow:
+
+# Sitemap for better discovery
+Sitemap: https://nestforge-studio.github.io/regcraft/sitemap.xml
