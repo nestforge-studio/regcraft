@@ -43,7 +43,7 @@ Email, URL (basic), IPv4 (simplified), Hex color (#RGB or #RRGGBB), UK postcode 
 - If you want to prevent indexing during a private preview, set a noindex meta in index.html or change robots.txt to disallow all temporarily.
 
 ## Support
-- Questions or licensing enquiries: legal@nestforge.studio
+- Questions or licencing enquiries: nestforge.studio@gmail.com
 
 ## License
 © 2025 Nestforge Studio. All rights reserved. This software is proprietary; no use is permitted without prior written permission. See LICENSE.txt for details.
