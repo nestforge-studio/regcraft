@@ -2,6 +2,9 @@
 
 RegCraft helps you build regular expressions without writing them by hand. Drag blocks, pick a ready-made recipe, or type a free‑text pattern, then test against your text with instant highlighting. Copy language snippets for JavaScript, Python, PHP, Java, or C# once you’re happy.
 
+👉 Try it online: [RegCraft – Visual Regex Builder](https://nestforge-studio.github.io/regcraft/)
+
+
 Live layout:
 - Desktop/laptop: Left side shows tabs (Blocks, Recipes, Free Text). Right side shows the Builder. Bottom shows Test Input and results.
 - Mobile/tablets: The Builder appears below the tabbed panel for a vertical, scroll-friendly flow.
@@ -37,10 +40,6 @@ Email, URL (basic), IPv4 (simplified), Hex color (#RGB or #RRGGBB), UK postcode 
 ## Privacy & security
 - RegCraft runs entirely in your browser. Your text and patterns are not sent to a server.
 - A strict Content Security Policy is set to reduce third‑party access.
-
-## Robots (search engines)
-- robots.txt currently allows all crawling so people can discover the site once published.
-- If you want to prevent indexing during a private preview, set a noindex meta in index.html or change robots.txt to disallow all temporarily.
 
 ## Support
 - Questions or licencing enquiries: nestforge.studio@gmail.com
